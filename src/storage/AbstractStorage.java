@@ -6,10 +6,9 @@ import model.Resume;
 
 public abstract class AbstractStorage implements Storage {
 
-    @Override
-    public void update(Resume r) {
-        Object searchKey = getExistingSearchKey(r.getUuid());
-        updateResume(searchKey, r);
+    public Resume get(String uuid) {
+        Object searchKey = getExistingSearchKey(uuid);
+        return getResume(searchKey);
     }
 
     public void save(Resume r) {
@@ -17,15 +16,16 @@ public abstract class AbstractStorage implements Storage {
         saveResume(searchKey, r);
     }
 
-    public Resume get(String uuid) {
-        Object searchKey = getExistingSearchKey(uuid);
-        return getResume(searchKey);
-    }
-
     @Override
     public void delete(String uuid) {
         Object searchKey = getExistingSearchKey(uuid);
         deleteResume(searchKey);
+    }
+
+    @Override
+    public void update(Resume r) {
+        Object searchKey = getExistingSearchKey(r.getUuid());
+        updateResume(searchKey, r);
     }
 
     private Object getExistingSearchKey(String uuid) {
@@ -46,15 +46,17 @@ public abstract class AbstractStorage implements Storage {
         }
     }
 
-    protected abstract void updateResume(Object searchKey, Resume r);
-
-    protected abstract void saveResume(Object searchKey, Resume r);
+    private boolean isExist(Object searchKey) {
+        return(searchKey != null);
+    }
 
     protected abstract Resume getResume(Object searchKey);
 
+    protected abstract void saveResume(Object searchKey, Resume r);
+
     protected abstract void deleteResume(Object searchKey);
 
-    protected abstract Object findSearchKey(String uuid);
+    protected abstract void updateResume(Object searchKey, Resume r);
 
-    protected abstract boolean isExist(Object searchKey);
+    protected abstract Object findSearchKey(String uuid);
 }
