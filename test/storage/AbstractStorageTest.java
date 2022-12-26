@@ -70,13 +70,13 @@ abstract class AbstractStorageTest {
     }
 
     @Test
-    void getAll() throws NoSuchFieldException {
+    void getAll() throws NoSuchFieldException, IllegalAccessException {
         Resume[] expected = new Resume[]{RESUME_1, RESUME_2, RESUME_3};
         expected = getAllExpected(storage, expected);
         assertArrayEquals(storage.getAll(), expected);
     }
 
-    protected abstract Resume[] getAllExpected(Storage storage, Resume[] expected) throws NoSuchFieldException;
+    protected abstract Resume[] getAllExpected(Storage storage, Resume[] expected) throws NoSuchFieldException, IllegalAccessException;
 
     @Test
     void save() {

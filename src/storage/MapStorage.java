@@ -40,10 +40,15 @@ public class MapStorage extends AbstractStorage {
     }
 
     protected Object findSearchKey(String uuid) {
-        if (storage.containsKey(uuid)) {
-            return uuid;
+        return uuid;
+    }
+
+    @Override
+    protected boolean isExist(Object searchKey) {
+        if (storage.containsKey((String) searchKey)) {
+            return true;
         } else {
-            return null;
+            return false;
         }
     }
 }

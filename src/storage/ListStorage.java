@@ -50,6 +50,6 @@ public class ListStorage extends AbstractStorage {
     }
 
     protected boolean isExist(Object searchKey) {
-        return (searchKey != null);
+        return(searchKey != null);
     }
 }

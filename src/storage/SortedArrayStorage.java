@@ -25,4 +25,8 @@ public class SortedArrayStorage extends AbstractArrayStorage {
         Comparator.comparing(Resume::getUuid);
         return Arrays.binarySearch(storage, 0, size, searchKey);
     }
+
+    protected boolean isExist(Object searchKey) {
+        return (searchKey != null);
+    }
 }

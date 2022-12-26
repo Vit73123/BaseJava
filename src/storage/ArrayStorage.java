@@ -23,4 +23,8 @@ public class ArrayStorage extends AbstractArrayStorage {
         }
         return null;
     }
+
+    protected boolean isExist(Object searchKey) {
+        return (searchKey != null);
+    }
 }

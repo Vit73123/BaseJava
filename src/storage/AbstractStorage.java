@@ -46,10 +46,6 @@ public abstract class AbstractStorage implements Storage {
         }
     }
 
-    private boolean isExist(Object searchKey) {
-        return(searchKey != null);
-    }
-
     protected abstract Resume getResume(Object searchKey);
 
     protected abstract void saveResume(Object searchKey, Resume r);
@@ -59,4 +55,6 @@ public abstract class AbstractStorage implements Storage {
     protected abstract void updateResume(Object searchKey, Resume r);
 
     protected abstract Object findSearchKey(String uuid);
+
+    protected abstract boolean isExist(Object searchKey);
 }
