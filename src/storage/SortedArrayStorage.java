@@ -8,8 +8,8 @@ import java.util.Comparator;
 public class SortedArrayStorage extends AbstractArrayStorage {
 
     @Override
-    protected void saveArrayResume(int index, Resume r) {
-        int insertionIndex = -index - 1;
+    protected void saveArrayResume(Object index, Resume r) {
+        int insertionIndex = -(int) index - 1;
         System.arraycopy(storage, insertionIndex, storage, insertionIndex + 1, size - insertionIndex);
         storage[insertionIndex] = r;
     }
@@ -21,12 +21,12 @@ public class SortedArrayStorage extends AbstractArrayStorage {
 
     @Override
     protected Object findSearchKey(String uuid) {
-        Resume searchKey = new Resume(uuid);
+        Resume searchResume = new Resume(uuid);
         Comparator.comparing(Resume::getUuid);
-        return Arrays.binarySearch(storage, 0, size, searchKey);
+        return Arrays.binarySearch(storage, 0, size, searchResume);
     }
 
     protected boolean isExist(Object searchKey) {
-        return (searchKey != null);
+        return ((int) searchKey >= 0);
     }
 }

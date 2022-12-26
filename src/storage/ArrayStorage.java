@@ -7,7 +7,7 @@ import model.Resume;
  */
 public class ArrayStorage extends AbstractArrayStorage {
 
-    protected void saveArrayResume(int index, Resume r) {
+    protected void saveArrayResume(Object index, Resume r) {
         storage[size] = r;
     }
 

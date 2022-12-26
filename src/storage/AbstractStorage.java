@@ -42,7 +42,7 @@ public abstract class AbstractStorage implements Storage {
         if (isExist(searchKey)) {
             throw new ExistStorageException(uuid);
         } else {
-            return uuid;
+            return searchKey;
         }
     }
 
